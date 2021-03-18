@@ -1,0 +1,36 @@
+{
+  "stopAction": [
+    "Parado aí, ${member}!",
+    "Mãos ao alto, ${member}!",
+    "${member} está prestes a cometer um crime!"
+  ],
+  "callModeration": [
+    "Vou ter que chamar um ${moderationRole} para resolver o seu caso",
+    "Vou ter que repassar esse problema para meus superiores ${moderationRole}",
+    "Alô ${moderationRole}, prenda este meliante"
+  ],
+  "unknownClass": [
+    "Nunca ouvi falar de nenhuma turma chamada \"${className}\".",
+    "\"${className}\"? Que turma é essa?",
+    "Olha, não me falaram de nenhuma turma chamada \"${className}\" não."
+  ],
+  "allClasses": [
+    "Digita \"!turmas\" que eu te mostro todas as disponíveis",
+    "Manda um \"!turmas\" pra ver todas as turmas",
+    "\"!turmas\" pra eu te contar as turmas disponíveis"
+  ],
+  "welcomeClass": [
+    "Seja bem vindo à ${classRole}, ${member}!",
+    "Alô ${classRole}, o ${member} acabou de se inscrever.",
+    "Apareceu um ${member} selvagem na ${classRole}"
+  ],
+  "unknownCommand": [
+    "Ops, não entendi esse comando. Aqui vão os comandos que eu sei responder:",
+    "Não sei se consigo responder essa... Tenta algum desses:"
+  ],
+  "dmBot": [
+    "Hmmmm, me chamando na DM, né? :smirk:\nMe chama no server da FACOM, danadinho(a) :3",
+    "O pessoal do server da FACOM quer que eu só responda as mensagens mandadas lá no servidor.\nAssim eles podem ver o que eu mando pra todo mundo ~help me plz~",
+    "Só respondo DM se forem assuntos criminosos :smirk:\nOs assuntos da FACOM eu respondo lá no servidor"
+  ]
+}
