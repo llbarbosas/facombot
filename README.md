@@ -3,7 +3,7 @@
 <p align="center">Bot do Discord do servidor FACOM UFMS</p> 
 <p align="center">
     <img src="https://img.shields.io/badge/version-0.1-brightgreen" />
-    <img src="https://img.shields.io/badge/status-online-brightgreen" />
+    <img src="https://img.shields.io/badge/status-offline-red" />
 </p>
 
 ### Sobre
@@ -23,7 +23,8 @@ O bot foi desenvolvido utilizando [TypeScript](https://www.typescriptlang.org/),
 
 ### TODO
 
-- [ ] [Comando "!tecnologias"](src/commands/tecnologies/manageTechnologies.ts)
+- [ ] Definir um ambiente para fazer o deploy da aplicação
+- [ ] [Comando "!tecnologia [entrar|sair]"](src/commands/tecnologies/manageTechnologies.ts)
 - [ ] [`discord.js` adapter](src/adapters/discordjs.ts) e definição completa das [interfaces de domínio do Discord](src/core/discord.ts)
   - [ ] Implementação do [`mockDiscordjsMessage`](src/adapters/discordjs.ts) para realizar os testes
   - [ ] Escrever casos de teste que dependem do [`mockDiscordjsMessage`](src/adapters/discordjs.ts)
