@@ -24,7 +24,7 @@ O bot foi desenvolvido utilizando [TypeScript](https://www.typescriptlang.org/),
 ### TODO
 
 - [ ] Definir um ambiente para fazer o deploy da aplicação
-- [ ] [Comando "!tecnologias"](src/commands/tecnologies/manageTechnologies.ts)
+- [ ] [Comando "!tecnologia [entrar|sair]"](src/commands/tecnologies/manageTechnologies.ts)
 - [ ] [`discord.js` adapter](src/adapters/discordjs.ts) e definição completa das [interfaces de domínio do Discord](src/core/discord.ts)
   - [ ] Implementação do [`mockDiscordjsMessage`](src/adapters/discordjs.ts) para realizar os testes
   - [ ] Escrever casos de teste que dependem do [`mockDiscordjsMessage`](src/adapters/discordjs.ts)
