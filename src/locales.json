@@ -32,5 +32,8 @@
     "Hmmmm, me chamando na DM, né? :smirk:\nMe chama no server da FACOM, danadinho(a) :3",
     "O pessoal do server da FACOM quer que eu só responda as mensagens mandadas lá no servidor.\nAssim eles podem ver o que eu mando pra todo mundo ~help me plz~",
     "Só respondo DM se forem assuntos criminosos :smirk:\nOs assuntos da FACOM eu respondo lá no servidor"
+  ],
+  "notExistsTechnologyRoles": [
+    "Ainda não conheço ${notExistRolesString}, mas você pedir pra algum ${moderationRole} pra adicionar no servidor"
   ]
 }

@@ -13,8 +13,9 @@ export interface Member {
 export interface Message {
   getAuthorMember(): any;
   sendChannelMessage(message: string): Promise<void>;
-  findAuthorRole(fn: FindRoleFn): Promise<Role>;
-  findGuildRole(fn: FindRoleFn): Promise<Role>;
+  findAuthorRole(fn: FindRoleFn): Promise<Role | undefined>;
+  findGuildRole(fn: FindRoleFn): Promise<Role | undefined>;
   getGuildRoles(): Promise<Role[]>;
   addAuthorRole(...roles: Role[]): any;
+  removeAuthorRole(...roles: Role[]): any;
 }

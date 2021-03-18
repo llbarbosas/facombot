@@ -12,3 +12,13 @@ export const filterClassRoles = (roles: Role[]) =>
 
 export const filterTechnologyRoles = (roles: Role[]) =>
   roles.filter((role) => technologyRoleColor === role.hexColor);
+
+export const arrayToTextualList = (arr: any[]) => {
+  const { length: l } = arr;
+  const listEnd = arr.slice(l - 2, l);
+  const listStart = arr.slice(0, l - 2);
+
+  const separator = l >= 3 ? ", " : "";
+
+  return listStart.join(", ") + separator + listEnd.join(" e ");
+};

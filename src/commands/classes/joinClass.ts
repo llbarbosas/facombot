@@ -1,4 +1,3 @@
-import { Role } from "@core/discord";
 import { Command } from "@core/command";
 import { left, right } from "@core/either";
 import { UserError } from "@core/errors";
