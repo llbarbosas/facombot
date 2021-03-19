@@ -39,17 +39,23 @@ export const joinClass: Command = {
       return left(
         UserError(
           `${getRandomPhrase("stopAction", {
-            member,
-          })} Você já está matriculado na turma ${
-            userCurrentClassRole.name
-          }. ${getRandomPhrase("callModeration", { moderationRole })}`
+            member: member?.toString(),
+          })} Você já está matriculado na turma ${`\`${userCurrentClassRole.name} \``}. ${getRandomPhrase(
+            "callModeration",
+            {
+              moderationRole: moderationRole?.toString(),
+            }
+          )}`
         )
       );
     }
 
     await message.addAuthorRole(desiredClassRole);
     await message.sendChannelMessage(
-      getRandomPhrase("welcomeClass", { member, classRole: desiredClassRole })
+      getRandomPhrase("welcomeClass", {
+        member: member?.toString(),
+        classRole: desiredClassRole.toString(),
+      })
     );
 
     return right(`${member} foi adicionado à turma ${desiredClassRole}`);

@@ -1,4 +1,4 @@
-import { Message, Role } from "discord.js";
+import { Message, Role as DiscordjsRole } from "discord.js";
 import { Message as DomainMessage } from "@core/discord";
 
 // TODO: Lidar com null/undefined nas chamadas
@@ -8,17 +8,18 @@ export const discordjsMessageAdapter = (message: Message): DomainMessage => ({
   sendChannelMessage: async (text: string) => {
     message.channel.send(text);
   },
-  findAuthorRole: async (fn) => message.member?.roles.cache.find(fn) as Role,
+  findAuthorRole: async (fn) => message.member?.roles.cache.find(fn),
   findGuildRole: async (fn) => message.guild?.roles.cache.find(fn),
-  addAuthorRole: (...roles: Role[]) =>
+  addAuthorRole: (...roles: DiscordjsRole[]) =>
     message.guild?.member(message.author)?.roles.add(roles),
-  removeAuthorRole: (...roles: Role[]) => message.member?.roles.remove(roles),
+  removeAuthorRole: (...roles: DiscordjsRole[]) =>
+    message.member?.roles.remove(roles),
   getGuildRoles: async () =>
-    (message.guild?.roles.cache.array() as Role[]) || [],
+    (message.guild?.roles.cache.array() as DiscordjsRole[]) || [],
 });
 
 export const mockDiscordjsMessage = (): DomainMessage => ({
-  getAuthorMember: () => console.log("getting member"),
+  getAuthorMember: () => ({ id: "" }),
   sendChannelMessage: async (text: string) => console.log("sending: ", text),
   findAuthorRole: async () => ({ id: "", name: "", hexColor: "" }),
   findGuildRole: async () => ({ id: "", name: "", hexColor: "" }),

@@ -1,10 +1,9 @@
 import { Command } from "@core/command";
 import { Role } from "@core/discord";
 import { left, right } from "@core/either";
-import { BotError, UserError } from "@core/errors";
+import { UserError } from "@core/errors";
 import { getRandomPhrase } from "@core/locales";
 import { arrayToTextualList, filterTechnologyRoles } from "@core/util";
-import { Role as DiscordjsRole } from "discord.js";
 
 type RolesMatch = {
   exist: Role[];
@@ -56,7 +55,7 @@ export const manageTechnologies: Command = {
 
       await message.sendChannelMessage(
         getRandomPhrase("notExistsTechnologyRoles", {
-          moderationRole,
+          moderationRole: moderationRole?.toString(),
           notExistRolesString,
         })
       );
@@ -67,8 +66,6 @@ export const manageTechnologies: Command = {
       action === "entrar" ? message.addAuthorRole : message.removeAuthorRole;
     await resolveAction(...rolesMatch.exist);
 
-    return right(
-      `${authorMember} foi ${resolveActionString} em ${rolesMatch.exist}`
-    );
+    return right(`${authorMember} foi ${resolveActionString} em ${rolesMatch}`);
   },
 };
