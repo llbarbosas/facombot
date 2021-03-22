@@ -1,3 +1,4 @@
+import 'module-alias/register';
 import 'dotenv/config';
 import { Client } from 'discord.js';
 import { botToken } from '@config/discord';
