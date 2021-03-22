@@ -10,7 +10,7 @@ export const discordjsMessageAdapter = (message: Message): DomainMessage => ({
     findGuildRole: async (fn) => message.guild?.roles.cache.find(fn),
     addAuthorRole: async (...roles: DiscordjsRole[]) => void message.guild?.member(message.author)?.roles.add(roles),
     removeAuthorRole: async (...roles: DiscordjsRole[]) => void message.member?.roles.remove(roles),
-    getGuildRoles: async () => (message.guild?.roles.cache.array() as DiscordjsRole[]) || [],
+    getGuildRoles: async () => message.guild?.roles.cache.array() || [],
 });
 
 export const mockDiscordjsMessage = (): DomainMessage => ({
