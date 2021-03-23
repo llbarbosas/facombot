@@ -1,4 +1,6 @@
-import 'module-alias/register';
+// import 'module-alias/register';
+require('module-alias/register');
+
 import 'dotenv/config';
 import { Client } from 'discord.js';
 import { botToken } from '@config/discord';
@@ -9,7 +11,7 @@ async function startBot() {
 
     try {
         await client.on('message', onMessage).login(botToken);
-        console.log('[client] Bot listening');
+        console.info('[client] Bot listening');
     } catch (err) {
         console.error(`[client] ${err}`);
         client.destroy();
