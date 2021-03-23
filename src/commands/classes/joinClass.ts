@@ -38,7 +38,7 @@ export const joinClass: Command = {
                 UserError(
                     `${getRandomPhrase('stopAction', {
                         member: member?.toString(),
-                    })} Você já está matriculado na turma ${`\`${userCurrentClassRole.name} \``}. ${getRandomPhrase(
+                    })} Você já está matriculado na turma ${`\`${userCurrentClassRole.name}\``}. ${getRandomPhrase(
                         'callModeration',
                         {
                             moderationRole: moderationRole?.toString(),

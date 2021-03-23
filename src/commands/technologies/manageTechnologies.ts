@@ -1,9 +1,10 @@
 import { Command } from '@core/command';
 import { Role } from '@core/discord';
-import { left, right } from '@core/either';
+import { left, map, right, valueOf } from '@core/either';
 import { UserError } from '@core/errors';
 import { getRandomPhrase } from '@core/locales';
 import { arrayToTextualList, filterTechnologyRoles } from '@core/util';
+import { showHelp } from '../showHelp';
 
 type RolesMatch = {
     exist: Role[];
@@ -29,7 +30,9 @@ export const manageTechnologies: Command = {
         const [action, ...desiredTechnologies] = args;
 
         if (!['entrar', 'sair'].includes(action)) {
-            return left(UserError('unknown action'));
+            const helpResult = await showHelp.execute(args, message);
+            const helpAsLeft = map((result: string) => UserError(result))(helpResult);
+            return left(valueOf(helpAsLeft));
         }
 
         const guildRoles = await message.getGuildRoles();
