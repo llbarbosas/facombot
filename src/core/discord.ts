@@ -20,4 +20,5 @@ export interface Message {
     getGuildRoles(): Promise<Role[]>;
     addAuthorRole(...roles: Role[]): Promise<void>;
     removeAuthorRole(...roles: Role[]): Promise<void>;
+    react(emoji: string): Promise<void>;
 }

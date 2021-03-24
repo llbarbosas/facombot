@@ -1,5 +1,5 @@
 import { Role } from '@core/discord';
-import { classRoleColors, technologyRoleColor } from '@config/discord';
+import { classRoleColors, technologyRoleColor, gameRoleColor } from '@config/discord';
 
 export const range = (n: number, startAt = 0): number[] => [...Array(n).keys()].map((i) => i + startAt);
 
@@ -10,6 +10,8 @@ export const filterClassRoles = (roles: Role[]): Role[] =>
 
 export const filterTechnologyRoles = (roles: Role[]): Role[] =>
     roles.filter((role) => technologyRoleColor === role.hexColor);
+
+export const filterGameRoles = (roles: Role[]): Role[] => roles.filter((role) => gameRoleColor === role.hexColor);
 
 export const arrayToTextualList = (arr: unknown[]): string => {
     const { length: l } = arr;

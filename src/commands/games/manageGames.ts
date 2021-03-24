@@ -4,7 +4,7 @@ import { Role } from '@core/discord';
 import { left, map, right, valueOf } from '@core/either';
 import { UserError } from '@core/errors';
 import { getRandomPhrase } from '@core/locales';
-import { arrayToTextualList, filterTechnologyRoles } from '@core/util';
+import { arrayToTextualList, filterGameRoles, randomBetween } from '@core/util';
 import { showHelp } from '../showHelp';
 
 type RolesMatch = {
@@ -12,23 +12,23 @@ type RolesMatch = {
     notExist: string[];
 };
 
-export const manageTechnologies: Command = {
-    name: 'tecnologia',
-    description: 'Adiciona ou remove usuário nos canais de tecnologia',
+export const manageGames: Command = {
+    name: 'jogo',
+    description: 'Adiciona ou remove usuário nos canais de jogos',
     flags: [
         {
             name: 'entrar',
             description: 'Adiciona usuário de um ou mais canais',
-            example: 'entrar python javascript',
+            example: 'entrar csgo lol',
         },
         {
             name: 'sair',
             description: 'Remove usuário de um ou mais canais',
-            example: 'sair python',
+            example: 'sair lol',
         },
     ],
     async execute(args, message) {
-        const [action, ...desiredTechnologies] = args;
+        const [action, ...desiredGames] = args;
 
         if (!['entrar', 'sair'].includes(action)) {
             const helpResult = await showHelp.execute(args, message);
@@ -39,12 +39,12 @@ export const manageTechnologies: Command = {
         const guildRoles = await message.getGuildRoles();
         const authorMember = await message.getAuthorMember();
 
-        const technologyRoles = filterTechnologyRoles(guildRoles);
-        const rolesMatch: RolesMatch = desiredTechnologies.reduce(
+        const gameRoles = filterGameRoles(guildRoles);
+        const rolesMatch: RolesMatch = desiredGames.reduce(
             (obj, role) => {
-                const technologyRole = technologyRoles.find((r) => r.name === role);
-                const exists = !!technologyRole ? 'exist' : 'notExist';
-                const actualRole = technologyRole || role;
+                const gameRole = gameRoles.find((r) => r.name === role);
+                const exists = !!gameRole ? 'exist' : 'notExist';
+                const actualRole = gameRole || role;
 
                 return { ...obj, [exists]: [...obj[exists], actualRole] };
             },
@@ -61,6 +61,10 @@ export const manageTechnologies: Command = {
                     notExistRolesString,
                 }),
             );
+        }
+
+        if (rolesMatch.exist.some((role) => role.name === 'lol') && randomBetween(0, 5) === 0) {
+            await message.sendChannelMessage(`${authorMember} credo, você também joga LOL?`);
         }
 
         await message.react(whiteCheckMarkEmoji);

@@ -11,6 +11,7 @@ export const discordjsMessageAdapter = (message: Message): DomainMessage => ({
     addAuthorRole: async (...roles: DiscordjsRole[]) => void message.guild?.member(message.author)?.roles.add(roles),
     removeAuthorRole: async (...roles: DiscordjsRole[]) => void message.member?.roles.remove(roles),
     getGuildRoles: async () => message.guild?.roles.cache.array() || [],
+    react: async (emoji: string) => void message.react(emoji),
 });
 
 export const mockDiscordjsMessage = (): DomainMessage => ({
@@ -21,4 +22,5 @@ export const mockDiscordjsMessage = (): DomainMessage => ({
     addAuthorRole: async () => console.log('adding author role'),
     getGuildRoles: async () => [{ id: '', name: '', hexColor: '' }],
     removeAuthorRole: async () => console.log(''),
+    react: async () => console.log(''),
 });

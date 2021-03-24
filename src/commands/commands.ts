@@ -11,8 +11,17 @@ import { getClasses } from './classes/getClasses';
 import { getTechnologies } from './technologies/getTechnologies';
 import { manageTechnologies } from './technologies/manageTechnologies';
 import { showHelp } from './showHelp';
+import { getGames } from './games/getGames';
+import { manageGames } from './games/manageGames';
 
-export const avalilableCommands = getAvailableCommands(joinClass, getClasses, getTechnologies, manageTechnologies);
+export const avalilableCommands = getAvailableCommands(
+    joinClass,
+    getClasses,
+    getTechnologies,
+    manageTechnologies,
+    getGames,
+    manageGames,
+);
 
 export function onMessage(message: Message): void {
     if (message.author.bot) return;

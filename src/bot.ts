@@ -1,5 +1,5 @@
 // import 'module-alias/register';
-require('module-alias/register');
+process.env.NODE_ENV === 'production' && require('module-alias/register');
 
 import 'dotenv/config';
 import { Client } from 'discord.js';

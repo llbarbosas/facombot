@@ -10,7 +10,7 @@
 
 Esse bot tem como objetivo oferecer suporte às funcionalidades do servidor da FACOM no Discord, como:
 
-- Permitir que alunos entrem/saiam dinamicamente de canais de tecnologias as quais eles tenham interesse
+- Permitir que alunos entrem/saiam dinamicamente de canais de tecnologias e de jogos as quais tenham interesse
 - Atribuir as respectivas turmas aos alunos
 - `[futuramente]` Promover iniciativas de gameficação no servidor
 
@@ -23,8 +23,10 @@ O bot foi desenvolvido utilizando [TypeScript](https://www.typescriptlang.org/),
 
 ### TODO
 
-- [ ] Definir um ambiente para fazer o deploy da aplicação
-- [ ] [Comando "!tecnologia [entrar|sair]"](src/commands/tecnologies/manageTechnologies.ts)
+- [x] ~Definir um ambiente para fazer o deploy da aplicação~ container Docker hospedado no AWS EC2
+- [x] [Comando "!tecnologia [entrar|sair]"](src/commands/tecnologies/manageTechnologies.ts)
+- [x] [Comando "!jogo [entrar|sair]"](src/commands/games/manageGames.ts)
+- [ ] Separar a parte comum nas lógicas dos comandos (_manageTechnologies/manageGames_ -> inserir usuário em roles, _get*_ -> exibir roles)
 - [ ] [`discord.js` adapter](src/adapters/discordjs.ts) e definição completa das [interfaces de domínio do Discord](src/core/discord.ts)
   - [ ] Implementação do [`mockDiscordjsMessage`](src/adapters/discordjs.ts) para realizar os testes
   - [ ] Escrever casos de teste que dependem do [`mockDiscordjsMessage`](src/adapters/discordjs.ts)
