@@ -15,6 +15,7 @@ import { getGames } from './games/getGames';
 import { manageGames } from './games/manageGames';
 
 export const avalilableCommands = getAvailableCommands(
+    showHelp,
     joinClass,
     getClasses,
     getTechnologies,

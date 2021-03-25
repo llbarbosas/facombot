@@ -1,4 +1,4 @@
-import { fireEmoji, whiteCheckMarkEmoji } from '@config/discord';
+import { whiteCheckMarkEmoji } from '@config/discord';
 import { Command } from '@core/command';
 import { Role } from '@core/discord';
 import { left, map, right, valueOf } from '@core/either';
@@ -14,6 +14,7 @@ type RolesMatch = {
 
 export const manageGames: Command = {
     name: 'jogo',
+    usage: '!jogo [entrar | sair] jogo1 jogo2 ...',
     description: 'Adiciona ou remove usuário nos canais de jogos',
     flags: [
         {

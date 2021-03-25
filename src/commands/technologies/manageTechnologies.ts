@@ -14,6 +14,7 @@ type RolesMatch = {
 
 export const manageTechnologies: Command = {
     name: 'tecnologia',
+    usage: '!tecnologia [entrar | sair] tecnologia1 tecnologia2 ...',
     description: 'Adiciona ou remove usuário nos canais de tecnologia',
     flags: [
         {

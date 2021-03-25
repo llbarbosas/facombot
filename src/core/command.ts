@@ -10,6 +10,7 @@ export interface Command {
     name: string;
     execute: CommandExecute;
     description: string;
+    usage?: string;
     flags?: CommandFlags;
 }
 

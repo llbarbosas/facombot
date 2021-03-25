@@ -7,7 +7,8 @@ export const showHelp: Command = {
     description: 'Exibe todos os comandos disponíveis',
     async execute(_, message) {
         const helpMessage = Object.entries(avalilableCommands).reduce(
-            (text, [commandName, { description }]) => `${text}\`${commandName}\`: ${description}\n`,
+            (text, [commandName, { description, usage }]) =>
+                `${text}\`${commandName}\`: ${description}\n${usage ? `\t\t_Exemplo: \`${usage}\`\n_` : ''}`,
             '',
         );
 

@@ -9,5 +9,7 @@ COPY --from=build-env /app/node_modules /app/node_modules
 COPY --from=build-env /app/build /app/build
 COPY --from=build-env /app/.env /app/package.json /app/
 
+ENV NODE_ENV=production
+
 WORKDIR /app
 CMD ["build/bot.js"]

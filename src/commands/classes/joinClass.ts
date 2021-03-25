@@ -3,11 +3,12 @@ import { left, map, right, valueOf } from '@core/either';
 import { UserError } from '@core/errors';
 import { getRandomPhrase } from '@core/locales';
 import { filterClassRoles } from '@core/util';
-import { showHelp } from 'commands/showHelp';
+import { showHelp } from '../showHelp';
 
 export const joinClass: Command = {
     name: 'turma',
     description: `Inscreve o aluno numa turma. Use "!turmas" para listar as turmas disponíveis`,
+    usage: `!turma entrar turma`,
     flags: [
         {
             name: 'entrar',
@@ -18,7 +19,7 @@ export const joinClass: Command = {
     async execute(args, message) {
         const [action, desiredClassRoleName, ...otherClasses] = args;
 
-        if (action !== 'action' || otherClasses.length > 0) {
+        if (action !== 'entrar' || otherClasses.length > 0) {
             const helpResult = await showHelp.execute(args, message);
             const helpAsLeft = map((result: string) => UserError(result))(helpResult);
             return left(valueOf(helpAsLeft));
