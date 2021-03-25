@@ -1,14 +1,28 @@
 import { Command } from '@core/command';
-import { left, right } from '@core/either';
+import { left, map, right, valueOf } from '@core/either';
 import { UserError } from '@core/errors';
 import { getRandomPhrase } from '@core/locales';
 import { filterClassRoles } from '@core/util';
+import { showHelp } from 'commands/showHelp';
 
 export const joinClass: Command = {
     name: 'turma',
     description: `Inscreve o aluno numa turma. Use "!turmas" para listar as turmas disponíveis`,
+    flags: [
+        {
+            name: 'entrar',
+            description: 'Adiciona usuário de uma turma',
+            example: 'entrar engsoft19',
+        },
+    ],
     async execute(args, message) {
-        const [desiredClassRoleName] = args;
+        const [action, desiredClassRoleName, ...otherClasses] = args;
+
+        if (action !== 'action' || otherClasses.length > 0) {
+            const helpResult = await showHelp.execute(args, message);
+            const helpAsLeft = map((result: string) => UserError(result))(helpResult);
+            return left(valueOf(helpAsLeft));
+        }
 
         const guildRoles = await message.getGuildRoles();
         const courseClasses = filterClassRoles(guildRoles);

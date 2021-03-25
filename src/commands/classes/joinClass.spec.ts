@@ -7,7 +7,7 @@ describe('joinClass', () => {
     it('Deve falhar para turmas que não existem', async () => {
         const message = mockDiscordjsMessage();
 
-        const result = await joinClass.execute(['engcivil'], message);
+        const result = await joinClass.execute(['entrar engcivil'], message);
 
         expect(isLeft(result) && isUserError(result.left)).toBe(true);
     });
@@ -16,7 +16,7 @@ describe('joinClass', () => {
         // TODO: Passar user mock com o role de uma turma
         const message = mockDiscordjsMessage();
 
-        const result = await joinClass.execute(['engsoft19'], message);
+        const result = await joinClass.execute(['entrar engsoft19'], message);
 
         expect(isLeft(result) && isUserError(result.left)).toBe(true);
     });
@@ -24,7 +24,7 @@ describe('joinClass', () => {
     it('Deve adicionar o role ao usuário', async () => {
         const message = mockDiscordjsMessage();
 
-        const result = await joinClass.execute(['engsoft19'], message);
+        const result = await joinClass.execute(['entrar engsoft19'], message);
 
         expect(isRight(result)).toBe(true);
         // expect(mockUser.roles).toContain(engsoft19Role);
